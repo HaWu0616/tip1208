@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}注册{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+          <form class='form-register' action="/register/"  method="post">
+
+              {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+              {% csrf_token %}
+              <h2 class="text-center">欢迎注册</h2>
+
+              <div class="form-group">
+                  <label for="inputusername" class="col-sm-2 control-label">用户名</label>
+                  <div>
+                      <input type="text" class="form-control" id="inputusername" placeholder="username" name="username">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="inputpassword" class="col-sm-2 control-label">输入密码</label>
+                  <div>
+                      <input type="text" class="form-control" id="inputpassword" placeholder="password" name="password">
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="inputemail" class="col-sm-2 control-label">邮箱</label>
+                  <div>
+                      <input type="text" class="form-control" id="inputemail" placeholder="email" name="email">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="inputphone" class="col-sm-2 control-label">手机号码</label>
+                  <div>
+                      <input type="text" class="form-control" id="inputphone" placeholder="phone" name="phone ">
+                  </div>
+              </div>
+
+
+              <button type="reset" class="btn btn-default pull-left">重置</button>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+
+          </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

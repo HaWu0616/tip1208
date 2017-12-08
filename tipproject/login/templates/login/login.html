@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+    <title>BUPT威胁情报平台</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    ** {% load staticfiles %}**
+    <!-- Bootstrap CSS -->
+    {% block image %} <link rel="shortcut icon"  href="{% static 'image/favicon.ico'%}">{% endblock %}
+    {% block css %}
+      <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css'%}">
+    <!-- my css -->
+      <link rel="stylesheet"  href="{% static 'css/index.css' %}">
+    {% endblock %}
+
+    <style>
+        .banner-bg {
+            background-size: cover;
+            background-image: url(/static/image/bg.png);
+        }
+    </style>
+</head>
+
+<body class="banner-bg">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="top-brand" href="#"> <!-- index-->
+                <img alt="Brand" src="{% static 'image/brand1.png'%}">
+            </a>
+            <p class="brand-text">BUPT威胁情报平台</p>
+        </div>
+        <a class="brand-title" href="#" onclick="showTab('login',true)">登陆</a>
+        <a class="brand-title" href="#" onclick="showTab('register',true)">注册</a>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 top-text">
+            <div class="text-center texttop">
+                <h1>BUPT威胁情报平台</h1>
+
+                <p class="lead">
+                    BUPT威胁情报平台致力于打造基于可信分析的高精度威胁情报平台
+                </p>
+            </div>
+        </div> <!-- col-md-8 -->
+
+        <div class="col-md-6 top-form">
+            <div class="login">
+                <div class="login-main">
+                    <div class="login-top">
+
+                        <form id="login-form" class="from-horizontal" action="/login/login/" method="post">
+                             {% csrf_token %}
+                              {% if message %}
+                                <div class="alert alert-warning">{{ message }}</div>
+                              {% endif %}
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <ul class="nav nav-tabs nav-justified">
+                                        <li role="presentation" class="active"><a>LOG IN</a></li>
+                                        <li role="presentation"><a onclick="showTab('register')">SIGN UP</a></li>
+                                    </ul>
+                                    <div class="top-em">
+                                        <input type="email" class="form-control" name="log_email" value=""
+                                               placeholder="Email"
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group top-1em">
+                                <div class="col-md-10">
+                                    <input type="password" class="form-control" name="log_password" value=""
+                                           placeholder="Password" required>
+                                </div>
+                            </div>
+                            <div class="form-group top-em">
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group top-em">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn btn-success">LOG IN</button>
+                                </div>
+                            </div>
+                        </form> <!-- login form -->
+
+
+                        <form id="reg-form" class="form-horizontal sr-only" action="/login/register/" method="post">
+                            {% csrf_token %}
+                             {% if message %}
+                                <div class="alert alert-warning">{{ message }}</div>
+                              {% endif %}
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <ul class="nav nav-tabs nav-justified">
+                                        <li role="presentation"><a onclick="showTab('login')">LOG IN</a></li>
+                                        <li role="presentation" class="active"><a>SIGN UP</a></li>
+                                    </ul>
+                                    <div class="top-em">
+                                        <input type="text" class="form-control" name="reg_username" value=""
+                                               placeholder="Username" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group top-2em">
+                                <div class="col-md-10">
+                                    <input type="email" class="form-control" name="reg_email" value=""
+                                           placeholder="Email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group top-2em">
+                                <div class="col-md-10">
+                                    <input type="password" class="form-control" name="reg_password1" value=""
+                                           placeholder="Password1" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group top-2em">
+                                <div class="col-md-10">
+                                    <input type="password" class="form-control" name="reg_password2" value=""
+                                           placeholder="Password2" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group top-2em">
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" name="reg_phone" value=""
+                                           placeholder="Phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group top-2em">
+                                <div class="col-md-10">
+                                    <button type="submit" class="btn btn-success">SIGN UP</button>
+                                </div>
+                            </div>
+
+                        </form> <!-- register form -->
+                    </div>
+                </div>
+            </div>
+        </div> <!-- col-md-5 -->
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+ {% block js %}
+      <script src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.2.1.js'%}"></script>
+<!-- my js -->
+     <script src="{% static 'js/index.js'%}"></script>
+  {% endblock %}
+
+</body>
+
+</html>
